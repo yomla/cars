@@ -1,12 +1,37 @@
 <form #carForm="ngForm"  (ngSubmit)="addCars(newCar); carForm.reset()">
     <div class="form-group">
       <label>Mark</label>
-      <input [(ngModel)]="newCar.mark" minlength="2" type="text" name="mark" class="form-control" required>
+      <input #mark="ngModel" [(ngModel)]="newCar.mark" minlength="2" type="text" name="mark" class="form-control" required>
     </div>
+    <!-- ERRORS -->
+
+    <div *ngIf="mark.invalid && (mark.dirty || mark.touched)"
+    class="alert alert-danger">
+      <div *ngIf="mark.errors.required">
+          Mark is required.
+      </div>
+      <div *ngIf="mark.errors.minlength">
+              Mark must be at least 2 characters long.
+      </div>  
+  </div>
+
     <div class="form-group">
       <label>Model</label>
-      <input [(ngModel)]="newCar.model" minlength="2" type="text" name="model" class="form-control" required>
+      <input #model="ngModel" [(ngModel)]="newCar.model" minlength="2" type="text" name="model" class="form-control" required>
     </div>
+    <!-- ERRORS -->
+
+    <div *ngIf="model.invalid && (model.dirty || model.touched)"class="alert alert-danger">
+      <div *ngIf="model.errors.required">
+          Model is required.
+      </div>
+      <div *ngIf="model.errors.minlength">
+            Model must be at least 2 characters long.
+      </div>  
+    </div>
+
+
+
     <div class="form-group">
       <label>Year</label>
       <select #year="ngModel" [(ngModel)]="newCar.year" name="year"
@@ -14,19 +39,47 @@
           <option *ngFor="let year of years">{{ year }}</option>
       </select>
     </div>
+
+    <!-- ERRORS -->
+
+    <div *ngIf="year.invalid && (year.dirty || year.touched)"class="alert alert-danger">
+      <div *ngIf="year.errors.required">
+          Year is required.
+      </div>    
+   </div>
+
     <div class="form-group">
       <label>Max Speed</label>
-      <input [(ngModel)]="newCar.maxSpeed" min="100" max="300" type="number" name="maxSpeed" class="form-control">
+      <input #maxSpeed="ngModel" [(ngModel)]="newCar.maxSpeed" min="100" max="300" type="number" name="maxSpeed" class="form-control">
     </div>
+    <!-- ERRORS -->
+    <!-- <div *ngIf="maxSpeed.errors.min" class="alert alert-danger">
+        Minimal speed must be more than 20 kmph.
+    </div> -->
+
+    <!-- <div *ngIf="maxSpeed.errors.max" class="alert alert-danger">
+            Maximal speed must be less than 300 kmph.
+    </div>     -->
+     
+
    
     <div class="form-group">
       <label>Is Automatic</label>
-      <input [(ngModel)]="newCar.isAutomatic" name="isAutomatic" type="checkbox" class="form-control" required> 
+      <input #isAutomatic="ngModel" [(ngModel)]="newCar.isAutomatic" name="isAutomatic" type="checkbox" class="form-control"> 
     </div>
-  
+
+      
     <div class="form-group">
       <label>Number od Door</label>
-      <input [(ngModel)]="newCar.numberOfDoors" min="2" max="5" type="number" name="numberOfDors" class="form-control" required>
+      <input #numberOfDoors="ngModel" [(ngModel)]="newCar.numberOfDoors" min="2" max="5" type="number" name="numberOfDors" class="form-control" required>
+    </div>
+    <!-- ERRORS -->
+
+    <div *ngIf="numberOfDoors.invalid && (numberOfDoors.dirty || numberOfDoors.touched)"
+    class="alert alert-danger">
+    <div *ngIf="numberOfDoors.errors.required">
+        Number of doors is required.
+    </div>
     </div>
   
     <div class="form-group">
