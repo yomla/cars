@@ -38,6 +38,8 @@
     </div>
 
     <button type="button" class="btn btn-danger" [disabled]="carForm.pristine" (click)="carForm.reset()">Reset</button>
-    <button type="submit" class="btn btn-primary">Add New Car</button>   
+    <button type="submit" class="btn btn-primary">Add New Car</button>
+    
+    <button type="button" class="btn btn-primary" (click)="preview(newCar)">Preview</button>
     
   </form>
