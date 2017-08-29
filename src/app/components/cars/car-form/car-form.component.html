@@ -91,8 +91,10 @@
     </div>
 
     <button type="button" class="btn btn-danger" [disabled]="carForm.pristine" (click)="carForm.reset()">Reset</button>
-    <button type="submit" class="btn btn-primary">Add New Car</button>
+    <button *ngIf="router.url.includes('add')" type="submit" class="btn btn-primary" [disabled]="!carForm.valid">Add New Car</button>
     
     <button type="button" class="btn btn-primary" (click)="preview(newCar)">Preview</button>
+
+    <a *ngIf="router.url.includes('edit')" routerLink="/cars" type="button" class="btn btn-primary">Save edit</a>
     
   </form>

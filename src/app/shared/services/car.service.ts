@@ -29,6 +29,12 @@ export class CarService {
     this.cars.push(car);
     this.routers.navigate(['/cars']); 
     }
+
+    public getCarById(id){
+      return this.cars.find((car) => {
+        return car['id'] == id;
+      })
+    }
  }
 
 
