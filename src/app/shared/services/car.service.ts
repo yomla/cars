@@ -1,48 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Cars } from '../models/cars.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class CarService {
 
+  idCount: number = 3;
+
   private cars = [
-    {
-      id: 1,
-      mark: 'BMW',
-      model: 'X4',
-      year: 2015,
-      maxSpeed: 300,
-      isAutomatic: 'Yes',
-      engine: 'Diesel',
-      numberOfDoors: 4
-    },
-    {
-      id: 2,
-      mark: 'Audi',
-      model: 'A6',
-      year: 2014,
-      maxSpeed: 280,
-      isAutomatic: 'Yes',
-      engine: 'Diesel',
-      numberOfDoors: 4
-    },
-    {
-      id: 3,
-      mark: 'Mercedes',
-      model: 'GLA',
-      year: 2015,
-      maxSpeed: 260,
-      isAutomatic: 'Yes',
-      engine: 'Diesel',
-      numberOfDoors: 3
-    }
-
-
-
-  ];
-  constructor() {}
+                  new Cars (1, 'BMW', 'X4', 2015, 300, true, 'Diesel', 4 ),
+                  new Cars (2, 'Audi', 'A6', 2014, 280, true, 'Diesel', 4 ),
+                  new Cars (3, 'Mercedes', 'GLA', 2015, 260, true, 'Diesel', 4 )   
+                 ];
+  constructor(private router: ActivatedRoute,
+    private routers: Router) {}
 
   public getCars(){
     return this.cars;
   }
 
-}
+  public idCounter() {
+    return this.idCount++;
+  }
+
+  public addCar(newCar){
+    let id = this.idCounter();
+    let car = new Cars(id, newCar.mark, newCar.model, newCar.year, newCar.maxSpeed, newCar.isAutomatic, newCar.engine, newCar.numberOfDoors);
+    this.cars.push(car);
+    this.routers.navigate(['/cars']); 
+    }
+ }
+
+
