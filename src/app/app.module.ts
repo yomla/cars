@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { CarsComponent } from './components/cars/cars.component';
 import { RouterModule, Routes } from '@angular/router';
+import { CarService } from './shared/services/car.service'
 
 const appRoutes = [
   {
@@ -29,7 +30,7 @@ const appRoutes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [CarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
