@@ -1,4 +1,4 @@
-<form #contactForm="ngForm"  (ngSubmit)="addCars(newCar)">
+<form #carForm="ngForm"  (ngSubmit)="addCars(newCar); carForm.reset()">
     <div class="form-group">
       <label>Mark</label>
       <input [(ngModel)]="newCar.mark" type="text" name="mark" class="form-control">
@@ -36,7 +36,8 @@
       <input [(ngModel)]="newCar.engine"  type="radio" name="engine" value="electric"> Electric<br>
       <input [(ngModel)]="newCar.engine"  type="radio" name="engine" value="hybrid"> Hybrid<br>
     </div>
-  
+
+    <button type="button" class="btn btn-danger" [disabled]="carForm.pristine" (click)="carForm.reset()">Reset</button>
     <button type="submit" class="btn btn-primary">Add New Car</button>   
     
   </form>

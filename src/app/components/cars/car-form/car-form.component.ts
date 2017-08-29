@@ -22,7 +22,8 @@ export class CarFormComponent implements OnInit {
 
   addCars(newCar){
     this.carService.addCar(newCar);
-      
+         
   }
 
+ 
 }
