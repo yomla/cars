@@ -1,40 +1,40 @@
 <form #carForm="ngForm"  (ngSubmit)="addCars(newCar); carForm.reset()">
     <div class="form-group">
       <label>Mark</label>
-      <input [(ngModel)]="newCar.mark" type="text" name="mark" class="form-control">
+      <input [(ngModel)]="newCar.mark" minlength="2" type="text" name="mark" class="form-control" required>
     </div>
     <div class="form-group">
       <label>Model</label>
-      <input [(ngModel)]="newCar.model" type="text" name="model" class="form-control">
+      <input [(ngModel)]="newCar.model" minlength="2" type="text" name="model" class="form-control" required>
     </div>
     <div class="form-group">
       <label>Year</label>
       <select #year="ngModel" [(ngModel)]="newCar.year" name="year"
-              class="form-control" >
+              class="form-control" required>
           <option *ngFor="let year of years">{{ year }}</option>
       </select>
     </div>
     <div class="form-group">
       <label>Max Speed</label>
-      <input [(ngModel)]="newCar.maxSpeed" type="number" name="maxSpeed" class="form-control">
+      <input [(ngModel)]="newCar.maxSpeed" min="100" max="300" type="number" name="maxSpeed" class="form-control">
     </div>
    
     <div class="form-group">
       <label>Is Automatic</label>
-      <input [(ngModel)]="newCar.isAutomatic" name="isAutomatic" type="checkbox" class="form-control">
+      <input [(ngModel)]="newCar.isAutomatic" name="isAutomatic" type="checkbox" class="form-control" required> 
     </div>
   
     <div class="form-group">
       <label>Number od Door</label>
-      <input [(ngModel)]="newCar.numberOfDoors" type="number" name="numberOfDors" class="form-control">
+      <input [(ngModel)]="newCar.numberOfDoors" min="2" max="5" type="number" name="numberOfDors" class="form-control" required>
     </div>
   
     <div class="form-group">
       <label>Engine</label><br>
-      <input [(ngModel)]="newCar.engine"  type="radio" name="engine" value="diesel"> Diesel<br>
-      <input [(ngModel)]="newCar.engine"  type="radio" name="engine" value="petrol"> Petrol<br>
-      <input [(ngModel)]="newCar.engine"  type="radio" name="engine" value="electric"> Electric<br>
-      <input [(ngModel)]="newCar.engine"  type="radio" name="engine" value="hybrid"> Hybrid<br>
+      <input [(ngModel)]="newCar.engine"  type="radio" name="engine" value="diesel" required> Diesel<br>
+      <input [(ngModel)]="newCar.engine"  type="radio" name="engine" value="petrol" required> Petrol<br>
+      <input [(ngModel)]="newCar.engine"  type="radio" name="engine" value="electric" required> Electric<br>
+      <input [(ngModel)]="newCar.engine"  type="radio" name="engine" value="hybrid" required> Hybrid<br>
     </div>
 
     <button type="button" class="btn btn-danger" [disabled]="carForm.pristine" (click)="carForm.reset()">Reset</button>
